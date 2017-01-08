@@ -14,7 +14,13 @@ void setup()
 {
   Serial.begin(115200);
   pinMode(13,OUTPUT);
+  pinMode(2,OUTPUT);
+  pinMode(9,OUTPUT);
   digitalWrite(13,LOW);
+  digitalWrite(2,HIGH);
+  digitalWrite(9,HIGH);
+  delay(1000);
+  digitalWrite(9,LOW);
   // initialize all the readings to 0:
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
     readings[thisReading] = 0;
@@ -30,6 +36,7 @@ void loop()
   if(average > threshold)
   {
     digitalWrite(13,HIGH);
+    digitalWrite(9,HIGH);
     
     if(music_playing == 0)
     {
@@ -40,6 +47,7 @@ void loop()
   if(average < threshold)
   {
     digitalWrite(13,LOW);
+    digitalWrite(9,LOW);
     
     if(music_playing == 1)
     {
